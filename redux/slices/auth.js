@@ -1,18 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    apiUser: "",
-    apiToken: ""
+    user: {},
 };
 
 const authSlice = createSlice({
-    name: 'modal',
+    name: 'user',
     initialState,
     reducers: {
         setUser(state, action) {
-            const {apiUser, apiToken} = action.payload;
-            state.apiUser = apiUser;
-            state.apiToken = apiToken;
+            state.user = action.payload;
         }
     },
 });
