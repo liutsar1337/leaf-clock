@@ -4,28 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="Basic tools install and cookies and axios setup">
-      <change afterPath="$PROJECT_DIR$/components/Loading/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Loading/loading.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Login/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Login/login.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Profile/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Profile/profile.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Register/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Register/register.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/TopBar/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/routes/authApi.js" afterDir="false" />
+    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="little registration and ui fix">
+      <change afterPath="$PROJECT_DIR$/components/Work/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Work/work.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/leafclock-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/userlogo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/MainScreen/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MainScreen/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/slices/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/slices/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TopBar/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +53,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/szutyk/projects/leaf-clock&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/szutyk/projects/leaf-clock/imgs&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -78,6 +65,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/imgs" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components/MainScreen" />
     </key>
@@ -95,7 +85,9 @@
       <workItem from="1700421275364" duration="746000" />
       <workItem from="1700464270342" duration="20323000" />
       <workItem from="1700552103865" duration="4723000" />
-      <workItem from="1700563212400" duration="7878000" />
+      <workItem from="1700563212400" duration="9427000" />
+      <workItem from="1700579431354" duration="2359000" />
+      <workItem from="1700639450389" duration="72000" />
     </task>
     <task id="LOCAL-00001" summary="Basic tools install and cookies and axios setup">
       <option name="closed" value="true" />
@@ -105,7 +97,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700421436238</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implement basic login and register functionality">
+      <option name="closed" value="true" />
+      <created>1700576942947</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700576942947</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +136,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic tools install and cookies and axios setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic tools install and cookies and axios setup" />
+    <MESSAGE value="Implement basic login and register functionality" />
+    <MESSAGE value="little registration and ui fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="little registration and ui fix" />
   </component>
 </project>

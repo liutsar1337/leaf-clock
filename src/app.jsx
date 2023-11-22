@@ -17,7 +17,8 @@ const router = createBrowserRouter([
     { path: '/', element: <MainScreen/>},
     { path: '/login', element: <Login/> },
     { path: '/register', element: <Register/>},
-    { path: '/profile', element: <Profile/>}
+    { path: '/profile', element: <Profile/>},
+    {path: '/work', element: <Work/>},
 ])
 
 const root = createRoot(document.body);
@@ -29,10 +30,10 @@ root.render(
     <React.StrictMode>
         <CookiesProvider>
             <Provider store={store}>
-                <PersistGate loading={<Loading/>} persistor={persistor}>
+                {/*<PersistGate loading={<Loading/>} persistor={persistor}>*/}
                     <TopBar/>
                     <RouterProvider router={router} />
-                </PersistGate>
+                {/*</PersistGate>*/}
             </Provider>
         </CookiesProvider>
     </React.StrictMode>
