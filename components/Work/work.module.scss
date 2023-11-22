@@ -1,0 +1,46 @@
+.time {
+
+  &_tracker {
+    padding: 50px;
+    background: darkgreen;
+  }
+  &_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: #3b9459;
+    &_digits {
+      color: wheat;
+      font-size: 55px;
+      letter-spacing: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    &_task {
+      color: wheat;
+      padding-bottom: 10px;
+      font-size: 25px;
+      display: flex;
+      justify-content: center;
+    }
+    &_button {
+      padding: 5px;
+      width: 200px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      &_start {
+        background: limegreen;
+      }
+      &_stop {
+        background: tomato;
+      }
+    }
+    &_details {
+      display: flex;
+      gap: 15px;
+      padding: 20px;
+    }
+  }
+}

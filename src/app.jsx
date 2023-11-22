@@ -12,13 +12,14 @@ import Register from '../components/Register';
 import { CookiesProvider } from 'react-cookie';
 import Profile from "../components/Profile";
 import TopBar from "../components/TopBar";
+import Work from '../components/Work';
 
 const router = createBrowserRouter([
     { path: '/', element: <MainScreen/>},
     { path: '/login', element: <Login/> },
     { path: '/register', element: <Register/>},
     { path: '/profile', element: <Profile/>},
-    {path: '/work', element: <Work/>},
+    { path: '/work', element: <Work/>},
 ])
 
 const root = createRoot(document.body);

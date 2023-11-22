@@ -12,6 +12,8 @@ export default function MainScreen() {
             <Link to={'/register'}>Register</Link>
             <br/>
             <Link to={'/profile'}>Profile</Link>
+            <br/>
+            <Link to={'/work'}>Work</Link>
         </div>
     )
 }
