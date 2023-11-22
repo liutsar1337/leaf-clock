@@ -1,0 +1,68 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"8a5140d0-3c82-4e65-aea7-0a9e2570ac52\" name=\"Changes\" comment=\"little registration and ui fix\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/Login/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Login/index.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/MainScreen/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/MainScreen/index.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/TopBar/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/TopBar/index.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/Work/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Work/index.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/Work/work.module.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Work/work.module.scss\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/imgs/leafclock-logo.png\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/package-lock.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package-lock.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/redux/slices/auth.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/redux/slices/auth.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/app.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/app.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/yarn.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/yarn.lock\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;liutsar1337&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"29b08b4e-0a03-464c-b943-0daacca55ad9\" />\r\n        <option name=\"url\" value=\"https://github.com/liutsar1337/leaf-clock.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YOrIrx9LDtrizGi2RgS3tc5Dwx\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"/home/szutyk/projects/leaf-clock/imgs\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"run.code.analysis.last.selected.profile\": \"pProject Default\",\r\n    \"settings.editor.selected.configurable\": \"reference.settings.ide.settings.new.ui\",\r\n    \"ts.external.directory.path\": \"C:\\\\Program Files\\\\JetBrains\\\\WebStorm 2023.2.4\\\\plugins\\\\javascript-impl\\\\jsLanguageServicesImpl\\\\external\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/imgs\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/components/MainScreen\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"8a5140d0-3c82-4e65-aea7-0a9e2570ac52\" name=\"Changes\" comment=\"\" />\r\n      <created>1700407389511</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700407389511</updated>\r\n      <workItem from=\"1700407390585\" duration=\"4857000\" />\r\n      <workItem from=\"1700412918647\" duration=\"5172000\" />\r\n      <workItem from=\"1700421275364\" duration=\"746000\" />\r\n      <workItem from=\"1700464270342\" duration=\"20323000\" />\r\n      <workItem from=\"1700552103865\" duration=\"4723000\" />\r\n      <workItem from=\"1700563212400\" duration=\"9427000\" />\r\n      <workItem from=\"1700579431354\" duration=\"2359000\" />\r\n      <workItem from=\"1700639450389\" duration=\"72000\" />\r\n      <workItem from=\"1700650959798\" duration=\"2341000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Basic tools install and cookies and axios setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700421436238</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700421436238</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Implement basic login and register functionality\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700576942947</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700576942947</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Basic tools install and cookies and axios setup\" />\r\n    <MESSAGE value=\"Implement basic login and register functionality\" />\r\n    <MESSAGE value=\"little registration and ui fix\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"little registration and ui fix\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 910223526ad296b60182890dc5982e2d8276c2d7)
++++ b/.idea/workspace.xml	(date 1700660369584)
+@@ -4,20 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="little registration and ui fix">
++    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="Initial design for time tracking page">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Login/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Login/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/MainScreen/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MainScreen/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/TopBar/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Work/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Work/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Work/work.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/Work/work.module.scss" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/imgs/leafclock-logo.png" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/redux/slices/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/slices/auth.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -94,7 +82,7 @@
+       <workItem from="1700563212400" duration="9427000" />
+       <workItem from="1700579431354" duration="2359000" />
+       <workItem from="1700639450389" duration="72000" />
+-      <workItem from="1700650959798" duration="2341000" />
++      <workItem from="1700650959798" duration="3618000" />
+     </task>
+     <task id="LOCAL-00001" summary="Basic tools install and cookies and axios setup">
+       <option name="closed" value="true" />
+@@ -112,7 +100,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1700576942947</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Initial design for time tracking page">
++      <option name="closed" value="true" />
++      <created>1700657933439</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1700657933439</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -145,6 +141,7 @@
+     <MESSAGE value="Basic tools install and cookies and axios setup" />
+     <MESSAGE value="Implement basic login and register functionality" />
+     <MESSAGE value="little registration and ui fix" />
+-    <option name="LAST_COMMIT_MESSAGE" value="little registration and ui fix" />
++    <MESSAGE value="Initial design for time tracking page" />
++    <option name="LAST_COMMIT_MESSAGE" value="Initial design for time tracking page" />
+   </component>
+ </project>
+\ No newline at end of file

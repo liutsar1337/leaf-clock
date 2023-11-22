@@ -1,15 +1,18 @@
 .content {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 
-  //padding: 20px;
-  background: #50C878	;
+  padding: 10px 20px 10px;
+  background: #50C878;
+  box-shadow: 0 0 15px rgba(0, 150, 0, 0.5)
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .user {
@@ -19,8 +22,19 @@
     padding-right: 10px;
     gap: 10px;
   }
+  &_name {
+    color: white;
+    font-weight: 600;
+  }
+
   &_icon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    &_bgcircle {
+      transform: translateX(200px);
+    }
+    background: white;
+    border-radius: 50%;
   }
 }

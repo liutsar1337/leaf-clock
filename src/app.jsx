@@ -13,10 +13,12 @@ import { CookiesProvider } from 'react-cookie';
 import Profile from "../components/Profile";
 import TopBar from "../components/TopBar";
 import Work from '../components/Work';
+import LandingPage from "../components/LandingPage";
 
 const router = createBrowserRouter([
     { path: '/', element: <MainScreen/>},
     { path: '/login', element: <Login/> },
+    { path: '/landing', element: <LandingPage/>},
     { path: '/register', element: <Register/>},
     { path: '/profile', element: <Profile/>},
     { path: '/work', element: <Work/>},

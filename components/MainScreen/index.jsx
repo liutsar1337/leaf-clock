@@ -15,7 +15,10 @@ export default function MainScreen() {
     }
     return (
         <div>
-            <h1>Hello from Liu!</h1>
+            <h1>Hello from LeafClock!</h1>
+            <h2>Here are temporary routes</h2>
+            <Link to={'/landing'}>Landing Page</Link>
+            <br/>
             <Link to={'/login'}>Login</Link>
             <br/>
             <button onClick={logout}>Logout</button>
