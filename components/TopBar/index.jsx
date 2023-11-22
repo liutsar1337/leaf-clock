@@ -16,11 +16,11 @@ export default function TopBar() {
             </div>
             <div>
                 <div className={s.user_container}>
-                    {user === null && <Link to={'/login'}/>}
+                    {/*{user === null && <Link to={'/login'}/>}*/}
                     {user && <>
-                        <Link to={'/profile'}>
-                            {user.username}
-                        </Link>
+                        {/*<Link ={'/profile'}>*/}
+                        {/*    {user.username}*/}
+                        {/*</Link>*/}
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width={1365.333}
