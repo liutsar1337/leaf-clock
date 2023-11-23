@@ -30,4 +30,4 @@ import './index.css';
 
 console.log('👋 This message is being logged by "renderer.js", included via Vite');
 
-import './app.jsx'
+import './index.jsx'
