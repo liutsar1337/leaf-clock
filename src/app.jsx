@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainScreen from '../components/MainScreen';
 import Loading from '../components/Loading';
 import { persistStore } from 'redux-persist'; // Import persistStore
@@ -14,15 +14,8 @@ import Profile from "../components/Profile";
 import TopBar from "../components/TopBar";
 import Work from '../components/Work';
 import LandingPage from "../components/LandingPage";
+import TestingWork from "../components/testingWork";
 
-const router = createBrowserRouter([
-    { path: '/', element: <MainScreen/>},
-    { path: '/login', element: <Login/> },
-    { path: '/landing', element: <LandingPage/>},
-    { path: '/register', element: <Register/>},
-    { path: '/profile', element: <Profile/>},
-    { path: '/work', element: <Work/>},
-])
 
 const root = createRoot(document.body);
 
@@ -34,8 +27,17 @@ root.render(
         <CookiesProvider>
             <Provider store={store}>
                 {/*<PersistGate loading={<Loading/>} persistor={persistor}>*/}
-                    <TopBar/>
-                    <RouterProvider router={router} />
+                    <Router>
+                        <TopBar/>
+                        <Routes>
+                            <Route path="/" element={<MainScreen />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/landing" element={<LandingPage />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/work" element={<Work />} />
+                            <Route path="/testingwork" element={<TestingWork />} />                        </Routes>
+                    </Router>
                 {/*</PersistGate>*/}
             </Provider>
         </CookiesProvider>

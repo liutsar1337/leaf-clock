@@ -29,6 +29,7 @@ export default function MainScreen() {
             <br/>
             <Link to={'/work'}>Work</Link>
             <br/>
+            <Link to={'/testingwork'}>Testing Work</Link>
         </div>
     )
 }

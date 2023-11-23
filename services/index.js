@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {useCookies} from "react-cookie";
 import {AuthApi} from "./routes/authApi";
+import {ActivityApi} from "./routes/activityApi";
+import {ProjectApi} from "./routes/projectApi";
+import {TimesheetsApi} from "./routes/timesheetsApi";
 
 export const Api = () => {
     const [cookies]= useCookies(['user', 'token']);
@@ -22,6 +25,9 @@ export const Api = () => {
 
     const apis = {
         auth: AuthApi(instance),
+        activities: ActivityApi(instance),
+        projects: ProjectApi(instance),
+        timesheets: TimesheetsApi(instance)
     };
 
     return apis;
