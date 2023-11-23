@@ -1,30 +1,19 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainScreen from '../components/MainScreen';
-import Loading from '../components/Loading';
-import { persistStore } from 'redux-persist'; // Import persistStore
-import { PersistGate } from 'redux-persist/integration/react'; // Import PersistGate
-import { Provider } from 'react-redux';
 import {store} from '../redux/store';
 import Login from '../components/Login';
 import Register from '../components/Register';
-import { CookiesProvider } from 'react-cookie';
 import Profile from "../components/Profile";
 import TopBar from "../components/TopBar";
 import Work from '../components/Work';
 import LandingPage from "../components/LandingPage";
 import TestingWork from "../components/testingWork";
-
-
-
-// Wrap your application with PersistGate
-const persistor = persistStore(store);
+import {useSelector} from "react-redux";
 
 const App = () => {
+    const user = useSelector(state => state.auth.user)
     return (
-        <CookiesProvider>
-            <Provider store={store}>
-                {/*<PersistGate loading={<Loading/>} persistor={persistor}>*/}
                 <Router>
                     <TopBar/>
                     {JSON.stringify(store)}
@@ -37,9 +26,6 @@ const App = () => {
                         <Route path="/work" element={<Work/>}/>
                         <Route path="/testingwork" element={<TestingWork/>}/> </Routes>
                 </Router>
-                {/*</PersistGate>*/}
-            </Provider>
-        </CookiesProvider>
     )
 };
 
