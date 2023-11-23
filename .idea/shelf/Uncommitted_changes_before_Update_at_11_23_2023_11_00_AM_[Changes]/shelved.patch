@@ -1,0 +1,145 @@
+Index: components/Profile/index.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, {useEffect} from 'react'\r\nimport {useCookies} from 'react-cookie';\r\nimport {Link} from \"react-router-dom\";\r\nimport {Api} from \"../../services\";\r\nimport {useSelector} from 'react-redux'\r\nimport s from './profile.module.scss'\r\nimport profileSettingsImage from '../../imgs/profile-settings-avatar.png'\r\n\r\nexport default function Profile() {\r\n    const [cookies] = useCookies(['user'])\r\n    const {user} = cookies\r\n    const userInfo = useSelector(state => state.auth.user)\r\n\r\n    useEffect(() => {\r\n        console.log(userInfo)\r\n    }, [])\r\n\r\n    const notSpecified = \"Not specified\"\r\n\r\n    return (\r\n        <div className={s.profile_settings}>\r\n            <img className={s.profile_settings_image} src={profileSettingsImage} alt=\"avatar\"/>\r\n            <div className={s.profile_settings_details}>\r\n                <h1 className={s.profile_settings_title}>Personal details</h1>\r\n                <div className={s.profile_settings_divider}></div>\r\n                <div className={s.profile_settings_group}>\r\n                    <div className={s.profile_settings_label}>Username: </div>\r\n                    <div className={s.profile_settings_value}>{userInfo?.username}</div>\r\n                </div>\r\n                <div className={s.profile_settings_group}>\r\n                    <div className={s.profile_settings_label}>User Title: </div>\r\n                    <div className={s.profile_settings_value}>{userInfo?.title\r\n                        ? userInfo?.title\r\n                        : <div\r\n                        className={s.profile_settings_value_notspecified}>\r\n                            Not specified\r\n                        </div>}\r\n                    </div>\r\n                </div>\r\n                <div className={s.profile_settings_group}>\r\n                    <div className={s.profile_settings_label}>Email: </div>\r\n                    <div className={s.profile_settings_value}>{user}</div></div>\r\n                <div className={s.profile_settings_group}>\r\n                    <div className={s.profile_settings_label}>Timezone:</div>\r\n                    <div className={s.profile_settings_value}>{userInfo.timezone}</div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    )\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/Profile/index.jsx b/components/Profile/index.jsx
+--- a/components/Profile/index.jsx	(revision 1638854a7f51c552bac048f5c48dd3382e3e80ba)
++++ b/components/Profile/index.jsx	(date 1700728397542)
+@@ -15,7 +15,11 @@
+         console.log(userInfo)
+     }, [])
+ 
+-    const notSpecified = "Not specified"
++    const notSpecified = (
++        <div className={s.profile_settings_value_notspecified}>
++            Not specified
++        </div>
++    );
+ 
+     return (
+         <div className={s.profile_settings}>
+@@ -24,25 +28,36 @@
+                 <h1 className={s.profile_settings_title}>Personal details</h1>
+                 <div className={s.profile_settings_divider}></div>
+                 <div className={s.profile_settings_group}>
+-                    <div className={s.profile_settings_label}>Username: </div>
++                    <div className={s.profile_settings_label}>Username:</div>
+                     <div className={s.profile_settings_value}>{userInfo?.username}</div>
+                 </div>
+                 <div className={s.profile_settings_group}>
+-                    <div className={s.profile_settings_label}>User Title: </div>
++                    <div className={s.profile_settings_label}>Title:</div>
+                     <div className={s.profile_settings_value}>{userInfo?.title
+                         ? userInfo?.title
+-                        : <div
+-                        className={s.profile_settings_value_notspecified}>
+-                            Not specified
+-                        </div>}
++                        : notSpecified}
+                     </div>
+                 </div>
+                 <div className={s.profile_settings_group}>
+-                    <div className={s.profile_settings_label}>Email: </div>
+-                    <div className={s.profile_settings_value}>{user}</div></div>
++                    <div className={s.profile_settings_label}>Email:</div>
++                    <div className={s.profile_settings_value}>{user}</div>
++                </div>
++                <div className={s.profile_settings_group}>
++                    <div className={s.profile_settings_label}>Language:</div>
++                    <div className={s.profile_settings_value}>
++                        {userInfo.language === "en_US"
++                            ? "English"
++                            : notSpecified
++                        }
++                    </div>
++                </div>
+                 <div className={s.profile_settings_group}>
+                     <div className={s.profile_settings_label}>Timezone:</div>
+                     <div className={s.profile_settings_value}>{userInfo.timezone}</div>
++                </div>
++                <div className={s.profile_settings_group}>
++                    <div className={s.profile_settings_label}>Currency:</div>
++                    {/*<div className={s.profile_settings_value}>{userInfo.preferences[0]}</div>*/}
+                 </div>
+             </div>
+         </div>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"8a5140d0-3c82-4e65-aea7-0a9e2570ac52\" name=\"Changes\" comment=\"Initial design for time tracking page\">\r\n      <change afterPath=\"$PROJECT_DIR$/components/LandingPage/index.jsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/components/LandingPage/landingPage.module.scss\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/MainScreen/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/MainScreen/index.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/Profile/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Profile/index.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/Profile/profile.module.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Profile/profile.module.scss\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/TopBar/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/TopBar/index.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/components/TopBar/topbar.module.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/TopBar/topbar.module.scss\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/imgs/VisualEditor_-_Icon_-_Tag.svg.png\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/imgs/dollar.svg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/imgs/task-list-4.svg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/app.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/app.jsx\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;liutsar1337&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"29b08b4e-0a03-464c-b943-0daacca55ad9\" />\r\n        <option name=\"url\" value=\"https://github.com/liutsar1337/leaf-clock.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YOrIrx9LDtrizGi2RgS3tc5Dwx\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"/home/szutyk/projects/leaf-clock/imgs\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"run.code.analysis.last.selected.profile\": \"pProject Default\",\r\n    \"settings.editor.selected.configurable\": \"preferences.keymap\",\r\n    \"ts.external.directory.path\": \"C:\\\\Program Files\\\\JetBrains\\\\WebStorm 2023.2.4\\\\plugins\\\\javascript-impl\\\\jsLanguageServicesImpl\\\\external\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/imgs\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/components/MainScreen\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"8a5140d0-3c82-4e65-aea7-0a9e2570ac52\" name=\"Changes\" comment=\"\" />\r\n      <created>1700407389511</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700407389511</updated>\r\n      <workItem from=\"1700407390585\" duration=\"4857000\" />\r\n      <workItem from=\"1700412918647\" duration=\"5172000\" />\r\n      <workItem from=\"1700421275364\" duration=\"746000\" />\r\n      <workItem from=\"1700464270342\" duration=\"20323000\" />\r\n      <workItem from=\"1700552103865\" duration=\"4723000\" />\r\n      <workItem from=\"1700563212400\" duration=\"9427000\" />\r\n      <workItem from=\"1700579431354\" duration=\"2359000\" />\r\n      <workItem from=\"1700639450389\" duration=\"72000\" />\r\n      <workItem from=\"1700663339025\" duration=\"5795000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Basic tools install and cookies and axios setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700421436238</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700421436238</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Implement basic login and register functionality\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700576942947</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700576942947</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Basic tools install and cookies and axios setup\" />\r\n    <MESSAGE value=\"Implement basic login and register functionality\" />\r\n    <MESSAGE value=\"little registration and ui fix\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"little registration and ui fix\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 1638854a7f51c552bac048f5c48dd3382e3e80ba)
++++ b/.idea/workspace.xml	(date 1700729936326)
+@@ -4,19 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="Initial design for time tracking page">
+-      <change afterPath="$PROJECT_DIR$/components/LandingPage/index.jsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/components/LandingPage/landingPage.module.scss" afterDir="false" />
++    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="Basic layout for profile settings">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/MainScreen/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MainScreen/index.jsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/components/Profile/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Profile/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Profile/profile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/Profile/profile.module.scss" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/TopBar/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/imgs/VisualEditor_-_Icon_-_Tag.svg.png" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/imgs/dollar.svg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/imgs/task-list-4.svg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.jsx" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -64,7 +54,7 @@
+     "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
+     "run.code.analysis.last.selected.profile": "pProject Default",
+-    "settings.editor.selected.configurable": "preferences.keymap",
++    "settings.editor.selected.configurable": "preferences.lookFeel",
+     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+     "vue.rearranger.settings.migration": "true"
+   }
+@@ -93,7 +83,8 @@
+       <workItem from="1700563212400" duration="9427000" />
+       <workItem from="1700579431354" duration="2359000" />
+       <workItem from="1700639450389" duration="72000" />
+-      <workItem from="1700663339025" duration="5795000" />
++      <workItem from="1700663339025" duration="5834000" />
++      <workItem from="1700726334843" duration="3393000" />
+     </task>
+     <task id="LOCAL-00001" summary="Basic tools install and cookies and axios setup">
+       <option name="closed" value="true" />
+@@ -111,7 +102,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1700576942947</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Basic layout for profile settings">
++      <option name="closed" value="true" />
++      <created>1700673708610</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1700673708610</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -144,6 +143,7 @@
+     <MESSAGE value="Basic tools install and cookies and axios setup" />
+     <MESSAGE value="Implement basic login and register functionality" />
+     <MESSAGE value="little registration and ui fix" />
+-    <option name="LAST_COMMIT_MESSAGE" value="little registration and ui fix" />
++    <MESSAGE value="Basic layout for profile settings" />
++    <option name="LAST_COMMIT_MESSAGE" value="Basic layout for profile settings" />
+   </component>
+ </project>
+\ No newline at end of file

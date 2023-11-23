@@ -5,35 +5,144 @@
 
   padding: 10px 20px 10px;
   background: #50C878;
-  box-shadow: 0 0 15px rgba(0, 150, 0, 0.5)
+  box-shadow: 0 0 15px rgba(0, 150, 0, 0.5);
+  height:40px;
 }
 
 .logo {
   width: 40px;
   height: 40px;
+
   user-select: none;
   -webkit-user-drag: none;
+  &_title {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 24px;
+
+    user-select: none;
+    -webkit-user-drag: none;
+  }
 }
 
-.user {
-  &_container {
+.container {
+  &_logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &_right_main {
     display: flex;
     align-items: center;
     padding-right: 10px;
-    gap: 10px;
   }
+
+  &_auth {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &_user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 16px;
+    margin-right: -16px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.25s ease-in-out;
+    z-index: 10;
+    min-width: 140px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #73d393;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+.button {
+  color: #50C878;
+  font-weight: 500;
+  background-color: white;
+  padding: 4px 16px;
+  border: white 1px solid;
+  border-radius: 4px;
+  transition: box-shadow 0.25s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  }
+  &_login {
+
+  }
+  &_signup {
+
+  }
+}
+
+// TODO change styles like google settings
+.popup {
+  position: absolute;
+  transform: translate(6.5%, 80%);
+
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  width: 150px;
+  z-index: 2;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  // TODO fix opacity transition
+  &._visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &_item {
+    color: dimgray;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #cccccc;
+    user-select: none;
+    -webkit-user-drag: none;
+
+    &:hover {
+      background-color: rgba(46, 46, 46, 0.1);
+    }
+  }
+}
+
+.custom_link {
+  text-decoration: none;
+}
+
+.user {
   &_name {
     color: white;
     font-weight: 600;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   &_icon {
     width: 30px;
     height: 30px;
     padding: 5px;
+
     &_bgcircle {
       transform: translateX(200px);
     }
+
     background: white;
     border-radius: 50%;
   }

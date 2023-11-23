@@ -24,32 +24,50 @@ const LoginForm = () => {
         }
     };
 
-    return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-                <label>Email:</label>
-                <Controller
-                    name="email"
-                    control={control}
-                    rules={{required: 'Email is required'}}
-                    render={({field}) => <input {...field} type="email"/>}
-                />
-                <span>{errors.email && errors.email.message}</span>
-            </div>
-            <br/>
-            <div>
-                <label>Password:</label>
-                <Controller
-                    name="password"
-                    control={control}
-                    rules={{required: 'Password is required'}}
-                    render={({field}) => <input {...field} type="password"/>}
-                />
-                <span>{errors.password && errors.password.message}</span>
-            </div>
+    return (<div className={s.form}>
+            <div className={s.form_container}>
+                <div className={s.form_title}>Sign In</div>
+                <form className={s.form_block} onSubmit={handleSubmit(onSubmit)}>
+                    <div className={s.form_subtitle}>Use your LeafClock account</div>
+                    <div>
+                        {/*<label>Email:</label>*/}
+                        <Controller
+                            name="email"
+                            control={control}
+                            rules={{required: 'Email is required'}}
+                            render={({field}) =>
+                                <input
+                                    className={s.form_input}
+                                    {...field}
+                                    type="email"
+                                    placeholder="Enter your email"
+                                />
+                            }
+                        />
+                        <span className={s.form_error}>{errors.email && errors.email.message}</span>
+                    </div>
+                    <div>
+                        {/*<label>Password:</label>*/}
+                        <Controller
+                            name="password"
+                            control={control}
+                            rules={{required: 'Password is required'}}
+                            render={({field}) =>
+                                <input
+                                    className={s.form_input}
+                                    {...field}
+                                    type="password"
+                                    placeholder="Enter your password"
+                                />
+                            }
+                        />
+                        <span className={s.form_error}>{errors.password && errors.password.message}</span>
+                    </div>
 
-            <button type="submit">Login</button>
-        </form>
+                    <button className={s.form_button} type="submit">Login</button>
+                </form>
+            </div>
+        </div>
     );
 };
 

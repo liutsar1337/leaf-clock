@@ -15,7 +15,11 @@ export default function Profile() {
         console.log(userInfo)
     }, [])
 
-    const notSpecified = "Not specified"
+    const notSpecified = (
+        <div className={s.profile_settings_value_notspecified}>
+            Not specified
+        </div>
+    );
 
     return (
         <div className={s.profile_settings}>
@@ -24,22 +28,29 @@ export default function Profile() {
                 <h1 className={s.profile_settings_title}>Personal details</h1>
                 <div className={s.profile_settings_divider}></div>
                 <div className={s.profile_settings_group}>
-                    <div className={s.profile_settings_label}>Username: </div>
+                    <div className={s.profile_settings_label}>Username:</div>
                     <div className={s.profile_settings_value}>{userInfo?.username}</div>
                 </div>
                 <div className={s.profile_settings_group}>
-                    <div className={s.profile_settings_label}>User Title: </div>
+                    <div className={s.profile_settings_label}>Title:</div>
                     <div className={s.profile_settings_value}>{userInfo?.title
                         ? userInfo?.title
-                        : <div
-                        className={s.profile_settings_value_notspecified}>
-                            Not specified
-                        </div>}
+                        : notSpecified}
                     </div>
                 </div>
                 <div className={s.profile_settings_group}>
-                    <div className={s.profile_settings_label}>Email: </div>
-                    <div className={s.profile_settings_value}>{user}</div></div>
+                    <div className={s.profile_settings_label}>Email:</div>
+                    <div className={s.profile_settings_value}>{user}</div>
+                </div>
+                <div className={s.profile_settings_group}>
+                    <div className={s.profile_settings_label}>Language:</div>
+                    <div className={s.profile_settings_value}>
+                        {userInfo.language === "en_US"
+                            ? "English"
+                            : notSpecified
+                        }
+                    </div>
+                </div>
                 <div className={s.profile_settings_group}>
                     <div className={s.profile_settings_label}>Timezone:</div>
                     <div className={s.profile_settings_value}>{userInfo.timezone}</div>
