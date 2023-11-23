@@ -44,3 +44,32 @@
     }
   }
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+
+  &_row {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background: #f2f2f2;
+    border: 1px solid #ddd;
+    &:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    &:hover {
+      background-color: #ddd;
+    }
+    &_cell {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+      width: 100%;
+    }
+  }
+}

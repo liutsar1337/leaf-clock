@@ -1,0 +1,478 @@
+Index: components/testingWork/s.module.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>layout {\n  display:flex;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/testingWork/s.module.scss b/components/testingWork/s.module.scss
+--- a/components/testingWork/s.module.scss	
++++ b/components/testingWork/s.module.scss	
+@@ -1,3 +1,4 @@
+-layout {
++.layout {
+   display:flex;
++  justify-content:space-around;
+ }
+\ No newline at end of file
+Index: components/Work/work.module.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.time {\n\n  &_tracker {\n    padding: 50px;\n    background: darkgreen;\n  }\n  &_block {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 10px;\n    background: #3b9459;\n    &_digits {\n      color: wheat;\n      font-size: 55px;\n      letter-spacing: 10px;\n      display: flex;\n      justify-content: center;\n    }\n    &_task {\n      color: wheat;\n      padding-bottom: 10px;\n      font-size: 25px;\n      display: flex;\n      justify-content: center;\n    }\n    &_button {\n      padding: 5px;\n      width: 200px;\n      border: none;\n      border-radius: 10px;\n      font-size: 18px;\n      &_start {\n        background: limegreen;\n      }\n      &_stop {\n        background: tomato;\n      }\n    }\n    &_details {\n      display: flex;\n      gap: 15px;\n      padding: 20px;\n    }\n  }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/Work/work.module.scss b/components/Work/work.module.scss
+--- a/components/Work/work.module.scss	
++++ b/components/Work/work.module.scss	
+@@ -43,4 +43,33 @@
+       padding: 20px;
+     }
+   }
++}
++
++.table {
++  width: 100%;
++  border-collapse: collapse;
++  border-spacing: 0;
++  border: 1px solid #ddd;
++  display: flex;
++  flex-direction: column;
++
++  &_row {
++    display: flex;
++    flex-direction: row;
++    padding: 10px;
++    background: #f2f2f2;
++    border: 1px solid #ddd;
++    &:nth-child(even) {
++      background-color: #f2f2f2;
++    }
++    &:hover {
++      background-color: #ddd;
++    }
++    &_cell {
++      padding: 10px;
++      border: 1px solid #ddd;
++      text-align: left;
++      width: 100%;
++    }
++  }
+ }
+\ No newline at end of file
+Index: components/testingWork/index.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, {useEffect} from 'react';\nimport {Api} from \"../../services\";\nimport s from './s.module.scss';\n\nfunction testingWork() {\n    const greeting = 'Hello Function Component!';\n    const [activities, setActivities] = React.useState([]);\n    const [projects, setProjects] = React.useState([]);\n    const [timesheets, setTimesheets] = React.useState([]);\n    const api = Api();\n    const getActivities = async () => {\n        try {\n            const response = await api.activities.getAll();\n            setActivities(response.data);\n        } catch (error) {\n            console.error(error);\n        }\n    };\n\n    const getProjects = async () => {\n            try {\n                const response = await api.projects.getAll();\n                setProjects(response.data);\n            } catch (error) {\n                console.error(error);\n            }\n    }\n\n    const getTimesheets = async () => {\n        try {\n            const response = await api.timesheets.getAll();\n            setTimesheets(response.data);\n        } catch (error) {\n            console.error(error);\n        }\n    }\n\n    useEffect(() => {\n        getActivities();\n        getProjects();\n        getTimesheets();\n    }, []);\n    return (\n        <div className={s.layout}>\n        <div>\n            <br/>\n            <br/>\n            <h1>Get All Activities</h1>\n            {activities.map((activity) => (\n                <div key={activity.id}>\n                    <p>{activity.name}</p>\n                </div>\n            ))}\n            <br/>\n            <br/>\n            <h1>Get All Projects</h1>\n            {projects.map((project) => (\n                <div key={project.id}>\n                    <p>{project.name}</p>\n                </div>\n            ))}\n            <h1>Timeshets</h1>\n            {timesheets.map((timesheet) => (\n                <div key={timesheet.id}>\n                    <p>{timesheet.id}</p>\n                </div>\n            ))}\n        </div>\n            <h1>Create activity</h1>\n        </div>\n    )\n}\n\nexport default testingWork;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/testingWork/index.jsx b/components/testingWork/index.jsx
+--- a/components/testingWork/index.jsx	
++++ b/components/testingWork/index.jsx	
+@@ -1,13 +1,18 @@
+-import React, {useEffect} from 'react';
+-import {Api} from "../../services";
++import React, { useState, useEffect, useMemo } from 'react';
++import { Api } from "../../services";
+ import s from './s.module.scss';
++import timestamp from "../../utils/timestamp";
++import secondsToHMS from "../../utils/formatSecondsToMainTimer";
+ 
+-function testingWork() {
+-    const greeting = 'Hello Function Component!';
+-    const [activities, setActivities] = React.useState([]);
+-    const [projects, setProjects] = React.useState([]);
+-    const [timesheets, setTimesheets] = React.useState([]);
++function TestingWork() {
++    const [activities, setActivities] = useState([]);
++    const [projects, setProjects] = useState([]);
++    const [timesheets, setTimesheets] = useState([]);
++    const [startTime, setStartTime] = useState(null);
++    const [isActive, setIsActive] = useState(false);
++    const [timeNow, setTimeNow] = useState(0);
+     const api = Api();
++
+     const getActivities = async () => {
+         try {
+             const response = await api.activities.getAll();
+@@ -16,15 +21,37 @@
+             console.error(error);
+         }
+     };
++
++    const createActivity = async () => {
++        try {
++            const response = await api.activities.create({
++                name: 'Test Activity'
++            });
++            console.log(response);
++        } catch (error) {
++            console.error(error);
++        }
++    };
+ 
+     const getProjects = async () => {
+-            try {
+-                const response = await api.projects.getAll();
+-                setProjects(response.data);
+-            } catch (error) {
+-                console.error(error);
+-            }
+-    }
++        try {
++            const response = await api.projects.getAll();
++            setProjects(response.data);
++        } catch (error) {
++            console.error(error);
++        }
++    };
++
++    const createProject = async () => {
++        try {
++            const response = await api.projects.create({
++                name: 'Test Project'
++            });
++            console.log(response);
++        } catch (error) {
++            console.error(error);
++        }
++    };
+ 
+     const getTimesheets = async () => {
+         try {
+@@ -33,42 +60,109 @@
+         } catch (error) {
+             console.error(error);
+         }
+-    }
++    };
++
++    const createTimesheet = async () => {
++        try {
++            const response = await api.timesheets.create({
++                billable: true,
++                exported: true,
++                project: 1,
++                activity: 1,
++                begin: timestamp(startTime),
++                end: timestamp(new Date()),
++                description: 'Test new'
++            });
++            console.log(response);
++        } catch (error) {
++            console.error(error);
++        }
++    };
++
++    const timerStart = () => {
++        setStartTime(new Date());
++        setIsActive(true);
++    };
++
++    const timerStop = async () => {
++        await createTimesheet();
++        setStartTime(null);
++        setIsActive(false);
++        setTimeNow(0);
++    };
+ 
+     useEffect(() => {
+         getActivities();
+         getProjects();
+         getTimesheets();
+     }, []);
++
++    useEffect(() => {
++        getTimesheets()
++    }, [isActive === false])
++
++    useEffect(() => {
++        let interval;
++
++        if (isActive) {
++            interval = setInterval(() => {
++                setTimeNow((prevSeconds) => prevSeconds + 1);
++            }, 1000);
++        }
++
++        // Cleanup the interval on component unmount or when isActive becomes false
++        return () => clearInterval(interval);
++    }, [isActive]); // The effect now depends on the isActive state
++
+     return (
+         <div className={s.layout}>
+-        <div>
+-            <br/>
+-            <br/>
+-            <h1>Get All Activities</h1>
+-            {activities.map((activity) => (
+-                <div key={activity.id}>
+-                    <p>{activity.name}</p>
+-                </div>
+-            ))}
+-            <br/>
+-            <br/>
+-            <h1>Get All Projects</h1>
+-            {projects.map((project) => (
+-                <div key={project.id}>
+-                    <p>{project.name}</p>
+-                </div>
+-            ))}
+-            <h1>Timeshets</h1>
+-            {timesheets.map((timesheet) => (
+-                <div key={timesheet.id}>
+-                    <p>{timesheet.id}</p>
+-                </div>
+-            ))}
+-        </div>
+-            <h1>Create activity</h1>
++            <div>
++                <br/>
++                <br/>
++                <h1>Get All Activities</h1>
++                {activities.map((activity) => (
++                    <div key={activity.id}>
++                        <p>{activity.name}</p>
++                    </div>
++                ))}
++                <br/>
++                <br/>
++                <h1>Get All Projects</h1>
++                {projects.map((project) => (
++                    <div key={project.id}>
++                        <p>{project.name}</p>
++                    </div>
++                ))}
++                <h1>Timeshets</h1>
++                {timesheets.map((timesheet) => (
++                    <div key={timesheet.id} className={s.layout}>
++                        <p>duration: {timesheet.duration}</p>
++                        <p>{timesheet.description}</p>
++                    </div>
++                ))}
++            </div>
++            <div>
++                <br/>
++                <br/>
++                <h1>Create new Activity</h1>
++                <button onClick={createActivity}>Create</button>
++                <br/>
++                <br/>
++                <h1>Create new Project</h1>
++                <button onClick={createProject}>Create</button>
++                <br/>
++                <br/>
++                <h1 >Create new Timesheet</h1>
++                <div className={s.layout}>
++                    {isActive ?
++                        <button onClick={timerStop}>stop</button>
++                        :
++                        <button onClick={timerStart}>start</button>}
++                    <b>{secondsToHMS(timeNow)}</b>
++                </div>
++
++            </div>
+         </div>
+     )
+ }
+-
+-export default testingWork;
+\ No newline at end of file
++export default TestingWork;
+Index: utils/timestampToHHMM.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/utils/timestampToHHMM.js b/utils/timestampToHHMM.js
+new file mode 100644
+--- /dev/null	
++++ b/utils/timestampToHHMM.js	
+@@ -0,0 +1,7 @@
++export default function timestampToHHMM(timestamp) {
++    const dateObject = new Date(timestamp);
++    const hours = dateObject.getHours().toString().padStart(2, '0');
++    const minutes = dateObject.getMinutes().toString().padStart(2, '0');
++
++    return `${hours}:${minutes}`;
++}
+\ No newline at end of file
+Index: utils/timestamp.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/utils/timestamp.js b/utils/timestamp.js
+new file mode 100644
+--- /dev/null	
++++ b/utils/timestamp.js	
+@@ -0,0 +1,3 @@
++export default function timestamp(date) {
++ return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}T${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
++}
+\ No newline at end of file
+Index: utils/formatSecondsToMainTimer.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/utils/formatSecondsToMainTimer.js b/utils/formatSecondsToMainTimer.js
+new file mode 100644
+--- /dev/null	
++++ b/utils/formatSecondsToMainTimer.js	
+@@ -0,0 +1,11 @@
++export default function secondsToHMS(seconds) {
++    const hours = Math.floor(seconds / 3600);
++    const minutes = Math.floor((seconds % 3600) / 60);
++    const remainingSeconds = seconds % 60;
++
++    const formattedHours = hours.toString().padStart(2, '0');
++    const formattedMinutes = minutes.toString().padStart(2, '0');
++    const formattedSeconds = remainingSeconds.toString().padStart(2, '0');
++
++    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
++}
+\ No newline at end of file
+Index: components/Work/index.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, {useEffect} from 'react';\nimport {useForm, Controller} from 'react-hook-form';\nimport s from './work.module.scss'\nimport classNames from \"classnames\";\n\nconst Work = () => {\n    const test = 3\n    let ifStart = true\n    let startButtonClass = classNames(s.time_block_button, s.time_block_button_start)\n    let stopButtonClass = classNames(s.time_block_button, s.time_block_button_stop)\n\n    return (\n        <div className={s.time_tracker}>\n            <div className={s.time_block}>\n                <div className={s.time_block_digits}>10:00</div>\n                <div className={s.time_block_task}>Working on time tracking page</div>\n                <button className={startButtonClass}>{ifStart ? \"Start\" : \"Stop\"}</button>\n                <div className={s.time_block_details}>\n                    <div>tag</div>\n                    <div>$</div>\n                    <div>project</div>\n                </div>\n            </div>\n        </div>\n    );\n};\n\nexport default Work;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/Work/index.jsx b/components/Work/index.jsx
+--- a/components/Work/index.jsx	
++++ b/components/Work/index.jsx	
+@@ -1,20 +1,97 @@
+-import React, {useEffect} from 'react';
++import React, {useEffect, useState} from 'react';
+ import {useForm, Controller} from 'react-hook-form';
+ import s from './work.module.scss'
+ import classNames from "classnames";
++import {Api} from "../../services";
++import timestamp from "../../utils/timestamp";
++import secondsToHMS from "../../utils/formatSecondsToMainTimer";
++import timestampToHHMM from "../../utils/timestampToHHMM";
+ 
+ const Work = () => {
+-    const test = 3
+-    let ifStart = true
+     let startButtonClass = classNames(s.time_block_button, s.time_block_button_start)
+     let stopButtonClass = classNames(s.time_block_button, s.time_block_button_stop)
+ 
++    const [selectedDescription, setSelectedDescription] = useState('');
++    const [timesheets, setTimesheets] = useState([]);
++    const [startTime, setStartTime] = useState(null);
++    const [isActive, setIsActive] = useState(false);
++    const [timeNow, setTimeNow] = useState(0);
++    const api = Api();
++
++    const getTimesheets = async () => {
++        try {
++            const response = await api.timesheets.getAll();
++            setTimesheets(response.data);
++        } catch (error) {
++            console.error(error);
++        }
++    };
++
++    const createTimesheet = async () => {
++        try {
++            const response = await api.timesheets.create({
++                billable: true,
++                exported: true,
++                project: 1,
++                activity: 1,
++                begin: timestamp(startTime),
++                end: timestamp(new Date()),
++                description: selectedDescription || 'No description',
++            });
++            console.log(response);
++        } catch (error) {
++            console.error(error);
++        }
++    };
++
++    const timerStart = () => {
++        setStartTime(new Date());
++        setIsActive(true);
++    };
++
++    const timerStop = async () => {
++        await createTimesheet();
++        setStartTime(null);
++        setIsActive(false);
++        setSelectedDescription('');
++        setTimeNow(0);
++    };
++
++    const handleDescriptionChange = (event) => {
++        setSelectedDescription(event.target.value);
++    }
++
++
++    useEffect(() => {
++        getTimesheets()
++    }, [isActive === false])
++
++    useEffect(() => {
++        let interval;
++
++        if (isActive) {
++            interval = setInterval(() => {
++                setTimeNow((prevSeconds) => prevSeconds + 1);
++            }, 1000);
++        }
++
++        return () => clearInterval(interval);
++    }, [isActive]);
++
++
+     return (
+-        <div className={s.time_tracker}>
++        <>
++            <div className={s.time_tracker}>
+             <div className={s.time_block}>
+-                <div className={s.time_block_digits}>10:00</div>
+-                <div className={s.time_block_task}>Working on time tracking page</div>
+-                <button className={startButtonClass}>{ifStart ? "Start" : "Stop"}</button>
++                <div className={s.time_block_digits}>{secondsToHMS(timeNow)}</div>
++                <input className={s.time_block_task}
++                placeholder={'Type something in'} value={selectedDescription}
++                onChange={handleDescriptionChange}
++                />
++                {isActive ?
++                    <button className={stopButtonClass} onClick={timerStop}>stop</button>
++                    :
++                    <button className={startButtonClass} onClick={timerStart}>start</button>}
+                 <div className={s.time_block_details}>
+                     <div>tag</div>
+                     <div>$</div>
+@@ -22,6 +99,26 @@
+                 </div>
+             </div>
+         </div>
++            <div className={s.table}>
++                {/*LIU CHANGE THIS FOR TABLE HEADER*/}
++                <div className={s.table_row}>
++                    <div className={s.table_row_cell}>Today</div>
++                    <div className={s.table_row_cell}></div>
++                    <div className={s.table_row_cell}></div>
++                    <div className={s.table_row_cell}></div>
++                </div>
++        {timesheets.map(
++            (timesheet) => (
++                <div className={s.table_row} key={timesheet.id}>
++                    <div className={s.table_row_cell}>{timesheet.description}</div>
++                    <div className={s.table_row_cell}>{timesheet.project}</div>
++                    <div className={s.table_row_cell}>{secondsToHMS(timesheet.duration)}</div>
++                    <div className={s.table_row_cell}>{timestampToHHMM(timesheet.begin)} - {timestampToHHMM(timesheet.end)}</div>
++                </div>
++            )
++        )}
++            </div>
++        </>
+     );
+ };
+ 
