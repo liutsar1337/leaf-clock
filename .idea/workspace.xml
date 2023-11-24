@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="Verify if user is authenticated before access to the page">
+    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="Topbar styles and basic popup and login with register page">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_23__3_01_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_23__3_01_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Login/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Login/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Login/login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/Login/login.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Profile/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Profile/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Register/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Register/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Register/register.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/Register/register.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TopBar/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Work/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Work/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Work/work.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/Work/work.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/userlogo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/userlogo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +96,8 @@
       <workItem from="1700579431354" duration="2359000" />
       <workItem from="1700639450389" duration="72000" />
       <workItem from="1700663339025" duration="5795000" />
+      <workItem from="1700814842064" duration="6622000" />
+      <workItem from="1700835186256" duration="5180000" />
     </task>
     <task id="LOCAL-00001" summary="Basic tools install and cookies and axios setup">
       <option name="closed" value="true" />
@@ -115,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700576942947</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Topbar styles and basic popup and login with register page">
+      <option name="closed" value="true" />
+      <created>1700755774372</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700755774373</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +156,7 @@
     <MESSAGE value="Basic tools install and cookies and axios setup" />
     <MESSAGE value="Implement basic login and register functionality" />
     <MESSAGE value="little registration and ui fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="little registration and ui fix" />
+    <MESSAGE value="Topbar styles and basic popup and login with register page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Topbar styles and basic popup and login with register page" />
   </component>
 </project>

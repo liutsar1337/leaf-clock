@@ -1,44 +1,123 @@
 .time {
 
   &_tracker {
-    padding: 50px;
-    background: darkgreen;
+    //display: flex;
+    //justify-content: center;
+    //padding: 50px;
+
+    //background: darkgreen;
   }
+
   &_block {
     display: flex;
     flex-direction: column;
+    align-content: center;
     align-items: center;
-    padding: 10px;
-    background: #3b9459;
+    //width: 80%;
+    //background: white;
+
+    &_timer {
+      display: flex;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 24px;
+      font-weight: 600;
+      width: 100%;
+
+      padding-top: 16px;
+      padding-bottom: 16px;
+
+      z-index: -1;
+      background-color: #73d393;
+      box-shadow: 0 1px 15px rgba(0, 150, 0, 0.5);
+    }
+
     &_digits {
-      color: wheat;
+      color: white;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
       font-size: 55px;
-      letter-spacing: 10px;
+      padding: 24px 0 12px 0;
       display: flex;
       justify-content: center;
+
+
     }
+
+    &_container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
     &_task {
-      color: wheat;
-      padding-bottom: 10px;
-      font-size: 25px;
+      color: black;
+      font-weight: 400;
       display: flex;
       justify-content: center;
-    }
-    &_button {
-      padding: 5px;
-      width: 200px;
+      padding: 12px 16px;
+      margin-left: 24px;
+      width: 100%;
+      //height:  10px;
+      font-size: 16px;
+      background-color: #fafafa;
+      border: 1px solid #ccc;
       border: none;
-      border-radius: 10px;
-      font-size: 18px;
-      &_start {
-        background: limegreen;
+      outline: none;
+      border-radius: 8px;
+      transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+
+      &:invalid {
+        border: 1px solid red;
       }
-      &_stop {
-        background: tomato;
+
+      &:focus {
+        border: 1px solid #73d393;
+        box-shadow: 0 1px 5px #73d393;
+      }
+
+      &:invalid:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-weight: 300;
+        font-size: 16px;
+        color: #ccc;
       }
     }
+
+    &_button {
+
+      color: white;
+      font-weight: 500;
+      font-size: 18px;
+      width: 200px;
+      padding: 12px 16px;
+      margin-left: 18px;
+      border: none;
+      border-radius: 12px;
+      transition: background-color 0.2s ease-in-out, box-shadow 0.25s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+      }
+
+      &_start {
+        background-color: #50C878;
+      }
+
+      &_stop {
+        background: #d35454;
+      }
+    }
+
     &_details {
       display: flex;
+      align-items: center;
       gap: 15px;
       padding: 20px;
     }
@@ -59,17 +138,56 @@
     padding: 10px;
     background: #f2f2f2;
     border: 1px solid #ddd;
+
     &:nth-child(even) {
       background-color: #f2f2f2;
     }
+
     &:hover {
       background-color: #ddd;
     }
+
     &_cell {
       padding: 10px;
       border: 1px solid #ddd;
       text-align: left;
       width: 100%;
+    }
+  }
+}
+
+
+.icon {
+  cursor: pointer;
+  fill: #808080;
+  transition: fill 0.1s ease-in-out;
+
+  &:hover {
+    fill: #4d4d4d;
+  }
+
+  &_tag {
+    width: 28px;
+    height: 28px;
+    transform: translate(4px, 0.5px) scale(1.15);
+  }
+
+  &_dollar {
+    width: 20px;
+    height: 20px;
+    transform: scale(1.1);
+  }
+
+  &_projects {
+    width: 24px;
+    height: 24px;
+  }
+
+  &_active {
+    fill: #73d393;
+
+    &:hover {
+      fill: #50C878;
     }
   }
 }
