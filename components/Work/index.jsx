@@ -8,17 +8,63 @@ import timestampToHHMM from "../../utils/timestampToHHMM";
 import tagIcon from '../../imgs/tag.svg'
 import dollarIcon from '../../imgs/dollar-billable.svg'
 import projectsIcon from '../../imgs/projects.svg'
-
+import {groupEntriesByDate, blockDisplayableDate} from "../../utils/groupEntriesByDate";
+import calculateTotalDuration from "../../utils/calculateToDuration";
+import findNameInObjectArray from "../../utils/findName";
 const Work = () => {
     let startButtonClass = classNames(s.time_block_button, s.time_block_button_start)
     let stopButtonClass = classNames(s.time_block_button, s.time_block_button_stop)
 
     const [selectedDescription, setSelectedDescription] = useState('');
     const [timesheets, setTimesheets] = useState([]);
+    const [isTagIconActive, setIsTagIconActive] = useState(false);
+    const [isBillable, setIsDollarIconActive] = useState(false);
+    const [isProjectsIconActive, setIsProjectsIconActive] = useState(false);
     const [startTime, setStartTime] = useState(null);
     const [isActive, setIsActive] = useState(false);
     const [timeNow, setTimeNow] = useState(0);
+    const [activities, setActivities] = useState([]);
+    const [projects, setProjects] = useState([]);
     const api = Api();
+    const getActivities = async () => {
+        try {
+            const response = await api.activities.getAll();
+            setActivities(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const createActivity = async () => {
+        try {
+            const response = await api.activities.create({
+                name: 'Test Activity'
+            });
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const getProjects = async () => {
+        try {
+            const response = await api.projects.getAll();
+            setProjects(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const createProject = async () => {
+        try {
+            const response = await api.projects.create({
+                name: 'Test Project'
+            });
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const getTimesheets = async () => {
         try {
@@ -32,7 +78,7 @@ const Work = () => {
     const createTimesheet = async () => {
         try {
             const response = await api.timesheets.create({
-                billable: true,
+                billable: isBillable,
                 exported: true,
                 project: 1,
                 activity: 1,
@@ -80,17 +126,16 @@ const Work = () => {
         return () => clearInterval(interval);
     }, [isActive]);
 
-
-    // TODO SORT WORK DETAILS ICON STATES
-    const [isTagIconActive, setIsTagIconActive] = useState(false);
-    const [isDollarIconActive, setIsDollarIconActive] = useState(false);
-    const [isProjectsIconActive, setIsProjectsIconActive] = useState(false);
+    useEffect(() => {
+        getActivities()
+        getProjects()
+    }, [])
 
     const handleTagIconClick = () => {
         setIsTagIconActive(!isTagIconActive);
     };
     const handleDollarIconClick = () => {
-        setIsDollarIconActive(!isDollarIconActive);
+        setIsDollarIconActive(!isBillable);
     }
     const handleProjectsIconClick = () => {
         setIsProjectsIconActive(!isProjectsIconActive);
@@ -126,7 +171,7 @@ const Work = () => {
                             {/*<img src={dollarIcon}  />*/}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className={classNames(s.icon, s.icon_dollar, isDollarIconActive ? s.icon_active : '')}
+                                className={classNames(s.icon, s.icon_dollar, isBillable ? s.icon_active : '')}
                                 xmlSpace="preserve"
                                 viewBox="0 0 256 256"
                                 onClick={handleDollarIconClick}
@@ -161,26 +206,49 @@ const Work = () => {
 
                 </div>
             </div>
-            <div className={s.table}>
-                <div className={s.table_row}>
-                    <div className={s.table_row_cell}>Today</div>
-                    <div className={s.table_row_cell}></div>
-                    <div className={s.table_row_cell}></div>
-                    <div className={s.table_row_cell}></div>
-                </div>
-                {timesheets.map(
-                    (timesheet) => (
-                        <div className={s.table_row} key={timesheet.id}>
-                            <div className={s.table_row_cell}>{timesheet.description}</div>
-                            <div className={s.table_row_cell}>{timesheet.project}</div>
-                            <div className={s.table_row_cell}>{secondsToHMS(timesheet.duration)}</div>
-                            <div
-                                className={s.table_row_cell}>
-                                {timestampToHHMM(timesheet.begin)} - {timestampToHHMM(timesheet.end)}
+            <div>
+                {/*<div className={s.table_title_box}>*/}
+                {/*<p className={s.table_title}>Timesheets</p>*/}
+                {/*</div>*/}
+                {
+                    groupEntriesByDate(timesheets).map(timesheetOfDay => (
+                        <div className={s.table}>
+                            <div className={s.table_header}>
+                                <div className={s.table_header_cell}>{blockDisplayableDate(timesheetOfDay[0].date)}</div>
+                                <div className={s.table_header_cell}></div>
+                                <div className={s.table_header_cell}></div>
+                                <div className={s.table_header_cell}></div>
+                                <div className={s.table_header_cell}></div>
+                                <div className={s.table_header_cell}></div>
+                                <div className={s.table_header_cell}>Total: {secondsToHMS(calculateTotalDuration(timesheetOfDay))}</div>
                             </div>
+                            {timesheetOfDay.map(timesheet => (
+                                <div className={s.table_row} key={timesheet.id}>
+                                    <div className={s.table_row_cell}>{timesheet.description}</div>
+                                    <div className={s.table_row_cell}>
+                                        {findNameInObjectArray(projects, timesheet.project)}: {findNameInObjectArray(activities, timesheet.activity, true)}
+                                    </div>
+                                    <div className={s.table_row_cell}>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className={classNames(s.icon, s.icon_dollar, timesheet.billable ? s.icon_active : '')}
+                                            xmlSpace="preserve"
+                                            viewBox="0 0 256 256"
+                                            onClick={handleDollarIconClick}
+                                        >
+                                            <path
+                                                d="M189.4 166.1c0 13.4-4.4 25-13.1 34.7-8.7 9.7-20.1 15.7-34.1 18v23c0 1.2-.4 2.2-1.2 3-.8.8-1.8 1.2-3 1.2h-17.8c-1.1 0-2.1-.4-3-1.3-.8-.8-1.3-1.8-1.3-3v-23c-5.8-.8-11.4-2.1-16.8-4.1s-9.9-3.9-13.4-5.9c-3.5-2-6.8-4.1-9.8-6.3-3-2.2-5-3.9-6.1-4.9-1.1-1.1-1.9-1.9-2.3-2.4-1.5-1.9-1.6-3.6-.3-5.4L81 172c.6-.9 1.6-1.4 3-1.6 1.3-.2 2.4.2 3.2 1.2l.3.3c9.9 8.7 20.6 14.2 32 16.5 3.3.7 6.5 1.1 9.8 1.1 7.1 0 13.4-1.9 18.8-5.7 5.4-3.8 8.1-9.1 8.1-16.1 0-2.5-.6-4.8-2-7-1.3-2.2-2.8-4-4.4-5.5-1.6-1.5-4.2-3.1-7.7-4.9-3.5-1.8-6.4-3.2-8.7-4.2-2.3-1-5.8-2.4-10.5-4.3-3.4-1.4-6.1-2.5-8.1-3.3-2-.8-4.7-2-8.1-3.5-3.4-1.5-6.2-2.9-8.2-4.1-2.1-1.2-4.6-2.7-7.4-4.7-2.9-1.9-5.3-3.8-7.1-5.6-1.8-1.8-3.7-4-5.7-6.5s-3.6-5.1-4.7-7.6c-1.1-2.6-2-5.5-2.8-8.8-.7-3.3-1.1-6.7-1.1-10.3 0-12.1 4.3-22.7 12.9-31.9 8.6-9.1 19.8-15 33.6-17.7V14.2c0-1.1.4-2.1 1.3-3 .8-.8 1.8-1.3 3-1.3h17.8c1.2 0 2.2.4 3 1.2.8.8 1.2 1.8 1.2 3v23.2c5 .5 9.9 1.5 14.5 3s8.5 3 11.5 4.4c2.9 1.4 5.7 3.1 8.4 4.9 2.6 1.9 4.3 3.1 5.1 3.8.8.7 1.4 1.3 2 1.9 1.5 1.6 1.7 3.3.7 5L174 79.5c-.7 1.3-1.7 2-3 2.1-1.2.3-2.4 0-3.6-.9-.3-.3-.9-.8-1.9-1.6s-2.7-2-5.1-3.5c-2.4-1.5-5-2.9-7.7-4.2s-6-2.4-9.8-3.4c-3.8-1-7.6-1.5-11.3-1.5-8.3 0-15.1 1.9-20.4 5.7S103 81 103 86.9c0 2.3.4 4.4 1.1 6.3.7 1.9 2 3.8 3.9 5.5 1.9 1.7 3.6 3.2 5.2 4.3 1.6 1.2 4.1 2.6 7.4 4.1 3.3 1.5 5.9 2.7 8 3.6 2 .8 5.1 2 9.2 3.6 4.6 1.8 8.2 3.1 10.7 4.1 2.5 1 5.8 2.6 10 4.6 4.2 2.1 7.5 3.9 9.9 5.6 2.4 1.7 5.1 3.9 8.2 6.6 3 2.7 5.3 5.5 7 8.4 1.6 2.8 3 6.2 4.1 10.1 1.2 3.9 1.7 8 1.7 12.4z"/>
+                                        </svg>
+                                        {secondsToHMS(timesheet.duration)}
+                                    </div>
+                                    <div className={s.table_row_cell}>
+                                        {timestampToHHMM(timesheet.begin)} - {timestampToHHMM(timesheet.end)}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    )
-                )}
+                    ))
+                }
             </div>
         </>
     );

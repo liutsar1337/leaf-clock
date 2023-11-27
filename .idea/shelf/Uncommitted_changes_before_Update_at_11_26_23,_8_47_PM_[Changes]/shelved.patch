@@ -1,0 +1,92 @@
+Index: src/app.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport { BrowserRouter as Router, Route, Routes } from 'react-router-dom';\nimport MainScreen from '../components/MainScreen';\nimport Login from '../components/Login';\nimport Register from '../components/Register';\nimport Profile from \"../components/Profile\";\nimport TopBar from \"../components/TopBar\";\nimport Work from '../components/Work';\nimport LandingPage from \"../components/LandingPage\";\nimport TestingWork from \"../components/testingWork\";\nimport {useSelector} from \"react-redux\";\n\nconst App = () => {\n    const isAuth = Boolean(useSelector(state => state.auth.user))\n    return (\n                <Router>\n                    <TopBar/>\n                    <Routes>\n                        <Route path=\"/\" element={<MainScreen/>}/>\n                        <Route path=\"/login\" element={<Login/>}/>\n                        <Route path=\"/landing\" element={<LandingPage/>}/>\n                        <Route path=\"/register\" element={<Register/>}/>\n                        <Route path=\"/profile\" element={\n                            isAuth ? <Profile/> : <Login/>\n                        }/>\n                        <Route path=\"/work\" element={\n                            isAuth ? <Work/> : <Login/>\n                        }/>\n                        <Route path=\"/testingwork\" element={\n                            isAuth ? <TestingWork/> : <Login/>\n                        }/>\n                    </Routes>\n                </Router>\n    )\n};\n\nexport default App;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app.jsx b/src/app.jsx
+--- a/src/app.jsx	(revision 4f9107e03b5e4a2e271502ab78057ce95499e1a9)
++++ b/src/app.jsx	(date 1700756131036)
+@@ -17,9 +17,13 @@
+                     <TopBar/>
+                     <Routes>
+                         <Route path="/" element={<MainScreen/>}/>
+-                        <Route path="/login" element={<Login/>}/>
++                        <Route path="/login" element={
++                            isAuth ? <MainScreen/> : <Login/>
++                        }/>
+                         <Route path="/landing" element={<LandingPage/>}/>
+-                        <Route path="/register" element={<Register/>}/>
++                        <Route path="/register" element={
++                            isAuth ? <MainScreen/> : <Register/>
++                        }/>
+                         <Route path="/profile" element={
+                             isAuth ? <Profile/> : <Login/>
+                         }/>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"8a5140d0-3c82-4e65-aea7-0a9e2570ac52\" name=\"Changes\" comment=\"Verify if user is authenticated before access to the page\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/components/Login/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Login/index.jsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/components/Login/login.module.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Login/login.module.scss\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/components/Profile/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Profile/index.jsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/components/Register/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Register/index.jsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/components/Register/register.module.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/Register/register.module.scss\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/components/TopBar/index.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/TopBar/index.jsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/components/TopBar/topbar.module.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/components/TopBar/topbar.module.scss\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/yarn.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/yarn.lock\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;liutsar1337&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">\n    <option name=\"selectedUrlAndAccountId\">\n      <UrlAndAccount>\n        <option name=\"accountId\" value=\"29b08b4e-0a03-464c-b943-0daacca55ad9\" />\n        <option name=\"url\" value=\"https://github.com/liutsar1337/leaf-clock.git\" />\n      </UrlAndAccount>\n    </option>\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 0\n}</component>\n  <component name=\"ProjectId\" id=\"2YOrIrx9LDtrizGi2RgS3tc5Dwx\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/szutyk/projects/leaf-clock/imgs&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,\n    &quot;ts.external.directory.path&quot;: &quot;C:\\\\Program Files\\\\JetBrains\\\\WebStorm 2023.2.4\\\\plugins\\\\javascript-impl\\\\jsLanguageServicesImpl\\\\external&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/imgs\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/components/testingWork\" />\n      <recent name=\"$PROJECT_DIR$/components/index\" />\n      <recent name=\"$PROJECT_DIR$/components/MainScreen\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"8a5140d0-3c82-4e65-aea7-0a9e2570ac52\" name=\"Changes\" comment=\"\" />\n      <created>1700407389511</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1700407389511</updated>\n      <workItem from=\"1700407390585\" duration=\"4857000\" />\n      <workItem from=\"1700412918647\" duration=\"5172000\" />\n      <workItem from=\"1700421275364\" duration=\"746000\" />\n      <workItem from=\"1700464270342\" duration=\"20323000\" />\n      <workItem from=\"1700552103865\" duration=\"4723000\" />\n      <workItem from=\"1700563212400\" duration=\"9427000\" />\n      <workItem from=\"1700579431354\" duration=\"2359000\" />\n      <workItem from=\"1700639450389\" duration=\"72000\" />\n      <workItem from=\"1700663339025\" duration=\"5795000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Basic tools install and cookies and axios setup\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1700421436238</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1700421436238</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Implement basic login and register functionality\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1700576942947</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1700576942947</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"main\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Basic tools install and cookies and axios setup\" />\n    <MESSAGE value=\"Implement basic login and register functionality\" />\n    <MESSAGE value=\"little registration and ui fix\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"little registration and ui fix\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4f9107e03b5e4a2e271502ab78057ce95499e1a9)
++++ b/.idea/workspace.xml	(date 1701021699775)
+@@ -4,16 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="Verify if user is authenticated before access to the page">
++    <list default="true" id="8a5140d0-3c82-4e65-aea7-0a9e2570ac52" name="Changes" comment="Added Main Timer">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Login/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Login/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Login/login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/Login/login.module.scss" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Profile/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Profile/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Register/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Register/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/Register/register.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/Register/register.module.scss" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/TopBar/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/index.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopBar/topbar.module.scss" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.jsx" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -98,6 +91,9 @@
+       <workItem from="1700579431354" duration="2359000" />
+       <workItem from="1700639450389" duration="72000" />
+       <workItem from="1700663339025" duration="5795000" />
++      <workItem from="1700812316183" duration="549000" />
++      <workItem from="1700834595782" duration="1826000" />
++      <workItem from="1701021217057" duration="483000" />
+     </task>
+     <task id="LOCAL-00001" summary="Basic tools install and cookies and axios setup">
+       <option name="closed" value="true" />
+@@ -115,7 +111,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1700576942947</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Added Main Timer">
++      <option name="closed" value="true" />
++      <created>1700755997436</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1700755997436</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -148,6 +152,7 @@
+     <MESSAGE value="Basic tools install and cookies and axios setup" />
+     <MESSAGE value="Implement basic login and register functionality" />
+     <MESSAGE value="little registration and ui fix" />
+-    <option name="LAST_COMMIT_MESSAGE" value="little registration and ui fix" />
++    <MESSAGE value="Added Main Timer" />
++    <option name="LAST_COMMIT_MESSAGE" value="Added Main Timer" />
+   </component>
+ </project>
+\ No newline at end of file

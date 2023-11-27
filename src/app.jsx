@@ -17,9 +17,13 @@ const App = () => {
                     <TopBar/>
                     <Routes>
                         <Route path="/" element={<MainScreen/>}/>
-                        <Route path="/login" element={<Login/>}/>
+                        <Route path="/login" element={
+                            isAuth ? <MainScreen/> : <Login/>
+                        }/>
                         <Route path="/landing" element={<LandingPage/>}/>
-                        <Route path="/register" element={<Register/>}/>
+                        <Route path="/register" element={
+                            isAuth ? <MainScreen/> : <Register/>
+                        }/>
                         <Route path="/profile" element={
                             isAuth ? <Profile/> : <Login/>
                         }/>
