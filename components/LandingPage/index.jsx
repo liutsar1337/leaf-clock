@@ -8,6 +8,7 @@ const LandingPage = () => {
     };
     return (
         <div className={`${s.lpage}`} style={gradientStyle}>
+            <h1>⚠️TEST ONLY - WORK PENDING⚠️</h1>
             <div className={s.lpage_title}>
 
                 🌿LeafClock time tracking
